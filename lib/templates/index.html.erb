@@ -427,7 +427,7 @@
 
           filteredData.value.Models.forEach(model => {
             lines.push(`    %% table name: ${model.TableName}`)
-            lines.push(`    ${model.ModelName.replace(/:/g, '-')} {`)
+            lines.push(`    ${isShowComment.value ? `${model.TableName} / ${moel.TableNameComment}` : model.TableName} {`)
 
             if (!isHideColumns.value) {
               model.Columns.forEach(column => {

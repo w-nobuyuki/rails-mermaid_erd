@@ -3,11 +3,11 @@ require "yaml"
 class RailsMermaidErd::Builder
   class << self
     def model_data
+      connection = ::ApplicationRecord::connection
       result = {
         Models: [],
         Relations: []
       }
-
       ::Rails.application.eager_load!
       ::ActiveRecord::Base.descendants.sort_by(&:name).each do |defined_model|
         next unless defined_model.table_exists?
@@ -16,6 +16,7 @@ class RailsMermaidErd::Builder
 
         model = {
           TableName: defined_model.table_name,
+          TableNameComment: connection.table_comment(defined_model.table_name),
           ModelName: defined_model.name,
           IsModelExist: true,
           Columns: []
