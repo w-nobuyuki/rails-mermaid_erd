@@ -243,7 +243,7 @@
   </div>
 
   <script src="https://cdn.tailwindcss.com/3.1.8?plugins=forms@0.5.2,typography@0.5.4"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.7/mermaid.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.8.0/mermaid.min.js"></script>
   <script src="https://unpkg.com/vue@3.2.40/dist/vue.global.js"></script>
 
   <script>window.SCHEMA_DATA=<%= result.to_json %></script>
@@ -427,7 +427,7 @@
 
           filteredData.value.Models.forEach(model => {
             lines.push(`    %% table name: ${model.TableName}`)
-            const tableName = model.TableNameComment ? `${model.TableName / model.TableNameComment}` : model.TableName;
+            const tableName = model.TableNameComment ? `${model.TableName} / ${model.TableNameComment}` : model.TableName;
             lines.push(`    ${model.ModelName.replace(/:/g, '-')}["${tableName}"] {`)
             if (!isHideColumns.value) {
               model.Columns.forEach(column => {
