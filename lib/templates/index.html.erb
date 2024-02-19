@@ -429,7 +429,7 @@
             lines.push(`    %% table name: ${model.TableName}`)
             lines.push(`    ${model.ModelName.replace(/:/g, '-')} {`)
             if (isShowComment.value) {
-              lines.push(`        "table_name ${model.TableNameComment}"`)
+              lines.push(`        table_name "${model.TableNameComment}"`)
             }
             if (!isHideColumns.value) {
               model.Columns.forEach(column => {
