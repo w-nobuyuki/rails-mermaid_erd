@@ -476,6 +476,7 @@
           mermaid.initialize({theme: 'dark'})
           mermaid.init()
           const { svg } = mermaid.render("mermaid-erd", mermaidErd.value);
+          console.log(svg);
           graph.value = svg;
           document.getElementById('preview').innerHTML = graph.value
         }
