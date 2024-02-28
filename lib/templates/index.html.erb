@@ -243,7 +243,6 @@
   </div>
 
   <script src="https://cdn.tailwindcss.com/3.1.8?plugins=forms@0.5.2,typography@0.5.4"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"></script>
   <script src="https://unpkg.com/vue@3.2.40/dist/vue.global.js"></script>
 
   <script>window.SCHEMA_DATA=<%= result.to_json %></script>
@@ -319,7 +318,9 @@
       }
     }
   </script>
-  <script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  
     const App = {
       setup(){
         const language = Vue.ref('en')
@@ -472,7 +473,7 @@
 
         const filterText = Vue.ref('')
 
-        const reRender = () => {
+        const async reRender = () => {
           mermaid.initialize({theme: 'dark'})
           console.log(mermaid);
           const { svg } = await mermaid.render("mermaid-erd", mermaidErd.value);
@@ -559,15 +560,15 @@
           }
         }
 
-        Vue.onMounted(() => {
+        Vue.onMounted(async () => {
           setLanguage(window.navigator.language)
           restoreFromHash()
-          reRender()
+          await reRender()
         })
 
-        window.addEventListener('hashchange', () => {
+        window.addEventListener('hashchange', async () => {
           restoreFromHash()
-          reRender()
+          await reRender()
         }, false);
 
         return {
