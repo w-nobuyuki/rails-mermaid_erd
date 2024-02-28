@@ -404,7 +404,7 @@
           updateHash()
         }
 
-        isCopiedUrl = Vue.ref(false)
+        const isCopiedUrl = Vue.ref(false)
         const onCopyUrl = () => {
           navigator.clipboard.writeText(location.href);
           isCopiedUrl.value = true
