@@ -243,7 +243,7 @@
   </div>
 
   <script src="https://cdn.tailwindcss.com/3.1.8?plugins=forms@0.5.2,typography@0.5.4"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.8.0/mermaid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"></script>
   <script src="https://unpkg.com/vue@3.2.40/dist/vue.global.js"></script>
 
   <script>window.SCHEMA_DATA=<%= result.to_json %></script>
@@ -474,8 +474,8 @@
 
         const reRender = () => {
           mermaid.initialize({theme: 'dark'})
-          mermaid.init()
-          const { svg } = mermaid.render("mermaid-erd", mermaidErd.value);
+          console.log(mermaid);
+          const { svg } = await mermaid.render("mermaid-erd", mermaidErd.value);
           console.log(svg);
           graph.value = svg;
           document.getElementById('preview').innerHTML = graph.value
