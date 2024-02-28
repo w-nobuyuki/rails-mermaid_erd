@@ -475,9 +475,7 @@
 
         const reRender = async () => {
           mermaid.initialize({theme: 'dark'})
-          console.log(mermaid);
           const { svg } = await mermaid.render("mermaid-erd", mermaidErd.value);
-          console.log(svg);
           graph.value = svg;
           document.getElementById('preview').innerHTML = graph.value
         }
